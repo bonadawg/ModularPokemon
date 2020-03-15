@@ -1,5 +1,6 @@
 package baseObjects;
 
+import enums.GrowthRate;
 import enums.Type;
 import helpers.PokemonUtil;
 import items.Item;
@@ -16,6 +17,8 @@ public abstract class Pokemon {
     protected final List<Type> types;
     protected final Set<Move> availableMoves;
     protected final Stats stats;
+    protected final int baseExperience;
+    protected final GrowthRate growthRate;
 
     // These are fields that can have defaults, but can vary per pokemon instance
     protected int level; // defaults to one
@@ -27,12 +30,20 @@ public abstract class Pokemon {
     protected List<Move> currentMoves;
 
     protected Pokemon(
-            int number, List<Type> types, Set<Move> availableMoves, List<Move> currentMoves, BaseStats baseStats) {
+            int number,
+            List<Type> types,
+            Set<Move> availableMoves,
+            List<Move> currentMoves,
+            BaseStats baseStats,
+            int baseExperience,
+            GrowthRate growthRate) {
         this.id = UUID.randomUUID();
         this.number = number;
         this.types = types;
         this.availableMoves = availableMoves;
         this.stats = new Stats(baseStats, new InfluenceValues(), PokemonUtil.randomNature());
+        this.baseExperience = baseExperience;
+        this.growthRate = growthRate;
 
         this.level = 1;
         this.experience = 0;
@@ -58,6 +69,16 @@ public abstract class Pokemon {
 
     public Stats getStats() {
         return stats;
+    }
+
+    public double getExperienceForDefeat(Optional<Trainer> trainer) {
+        double exp = baseExperience * level / 7;
+        /*if(!trainerDNE)
+                 exp*=1.5;
+         elseif(trainerID!=userID)
+                 exp*=1.5;
+        */
+        return exp;
     }
 
     public Optional<Item> getHeldItem() {

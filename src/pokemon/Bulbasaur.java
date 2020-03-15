@@ -3,6 +3,7 @@ package pokemon;
 import baseObjects.Move;
 import baseObjects.Pokemon;
 import baseStats.BulbasaurStats;
+import enums.GrowthRate;
 import enums.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +20,9 @@ public class Bulbasaur extends Pokemon {
                 new ArrayList<Type>(Arrays.asList(Type.Grass, Type.Poison)),
                 getAvailableMoves(),
                 getStartingMoves(),
-                new BulbasaurStats());
+                new BulbasaurStats(),
+                64,
+                GrowthRate.MediumSlow);
     }
 
     private static List<Move> getStartingMoves() {

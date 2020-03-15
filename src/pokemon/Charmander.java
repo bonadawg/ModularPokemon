@@ -3,6 +3,7 @@ package pokemon;
 import baseObjects.Move;
 import baseObjects.Pokemon;
 import baseStats.CharmanderStats;
+import enums.GrowthRate;
 import enums.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +20,9 @@ public class Charmander extends Pokemon {
                 new ArrayList<Type>(Arrays.asList(Type.Fire)),
                 getAvailableMoves(),
                 getStartingMoves(),
-                new CharmanderStats());
+                new CharmanderStats(),
+                62,
+                GrowthRate.MediumSlow);
     }
 
     private static List<Move> getStartingMoves() {

@@ -3,6 +3,7 @@ package pokemon;
 import baseObjects.Move;
 import baseObjects.Pokemon;
 import baseStats.SquirtleStats;
+import enums.GrowthRate;
 import enums.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,9 @@ public class Squirtle extends Pokemon {
                 new ArrayList<Type>(Arrays.asList(Type.Water)),
                 getAvailableMoves(),
                 getStartingMoves(),
-                new SquirtleStats());
+                new SquirtleStats(),
+                63,
+                GrowthRate.MediumSlow);
     }
 
     private static List<Move> getStartingMoves() {
